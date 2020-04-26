@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Sklep internetowy E-Apteka Zdrowie">
+	  <meta name="keywords" content="apteka, leki, sprzedaz lekow, realizacja e recepty, witaminy, sumplementy diety, leki na recepte">
+  	<meta name="author" content="Lukasz Afiniec & Taras">
+    <title>E-Apteka Zdrowie | Informacje o koncie</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/style.css}">
+  </head>
+  
+  <body>
+  
+  <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">E-Apteka</span> Zdrowie</h1>
+        </div>
+        <nav>
+          <ul>
+           <li><th:block th:include="/_menu"></th:block></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
+   
+    
+    
+       
+      <div class="page-title">Informacje o koncie</div>
+      <div class="account-container">
+         <ul>
+            <li>Nazwa urzytkownika: <span th:utext="${#request.userPrincipal.name}"></span></li>
+            <li>
+               Rodzaj uprawnien:
+               <ul>
+                  <li th:each="auth : ${userDetails.authorities}" th:utext="${auth.authority}"></li>
+               </ul>
+            </li>
+         </ul>
+      </div>
+       
+      <th:block th:include="/_footer"></th:block>
+       
+   </body>
+</html>

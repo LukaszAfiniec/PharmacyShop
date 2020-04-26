@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Sklep internetowy E-Apteka Zdrowie">
+	  <meta name="keywords" content="apteka, leki, sprzedaz lekow, realizacja e recepty, witaminy, sumplementy diety, leki na recepte">
+  	<meta name="author" content="Lukasz Afiniec & Taras">
+    <title>E-Apteka Zdrowie | Logowanie</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/static/css/style.css}"/>
+  </head>
+   <body>
+   <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">E-Apteka</span> Zdrowie</h1>
+        </div>
+        <nav>
+          <ul>
+           <li><th:block th:include="/_menu"></th:block></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
+     
+       
+      <div class="page-title">Logowanie</div>
+       
+      <div class="login-container">
+         <h3>Wprowadz nazwę użytkownika oraz hasło:</h3>
+         <br>
+       
+         <th:block th:if="${#session != null && #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}">
+             <div th:if= "${#request.getParameter('error') == 'true'}"
+                style="color: red; margin: 10px 0px;">
+                Błąd logowanie!<br /> Reason :
+                <span th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}"></span>
+             </div>
+         </th:block>
+          
+         <form method="POST"
+            th:action="@{/j_spring_security_check}">
+            <table>
+               <tr>
+                  <td>User Name *</td>
+                  <td><input name="userName" /></td>
+               </tr>
+               <tr>
+                  <td>Password *</td>
+                  <td><input type="password" name="password" /></td>
+               </tr>
+               <tr>
+                  <td>&nbsp;</td>
+                  <td>
+                      <input type="submit" value="Zaloguj" />
+                      <input type="reset"  value="Resetuj" />
+                  </td>
+               </tr>
+            </table>
+         </form>
+          
+         <span class="error-message" th:utext="${error}"></span>
+      </div>
+       
+      
+       
+      <th:block th:include="/_footer"></th:block>
+       
+   </body>
+</html>

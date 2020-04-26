@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Sklep internetowy E-Apteka Zdrowie">
+	  <meta name="keywords" content="apteka, leki, sprzedaz lekow, realizacja e recepty, witaminy, sumplementy diety, leki na recepte">
+  	<meta name="author" content="Lukasz Afiniec & Taras">
+    <title>E-Apteka Zdrowie | Witamy</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/style.css}">
+  </head>
+  
+  <body>
+
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">E-Apteka</span> Zdrowie</h1>
+        </div>
+        <nav>
+          <ul>
+           <li><th:block th:include="/_menu"></th:block></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="showcase">
+      <div class="container">
+        <h1>Witamy w naszej aptece internetowej</h1>
+        <p>Portal E-Apteka Zdrowie, to doskonałe miejsce do zakupu produktów leczniczych oraz leków przez Internet. <br /> 
+		       Z nami w szybki i wygodny sposób zamówisz produkty farmaceutyczne bez wychodzenia z domu a my dostarczymy je na podany przez ciebie adres.</p>
+      </div>
+    </section>
+
+    <section id="newsletter">
+      <div class="container">
+        <h1>Zapisz się do naszego Newslettera</h1>
+        <form>
+          <input type="email" placeholder="Wpisz swój adres e-mail">
+          <button type="submit" class="button_1">Zapisz się</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="boxes">
+      <div class="container">
+        <div class="box">
+        <img th:src="@{/images/logo_leki.png}">
+          <h3>Bogaty asortyment leków</h3>
+          <p>W przypadku braku danego leku oraz jego zamienników, na życzenie klienta możliwe jest zamówienie go z hurtowni na terenie naszego kraju lub ściąganięcie go z zagranicy.  </p>
+        </div>
+        <div class="box">
+        <img th:src="@{/images/logo_erecipe.png}">
+          <h3>Realizacja e-recept</h3>
+          <p>Na naszym portalu w prosty i przejrzysty sposób zrealizują Państwo wszystkie elektroniczne recepty.</p>
+        </div>
+		 <div class="box">
+		 <img th:src="@{/images/logo_clock.png}">
+          <h3>21 dni na zwrot przesyłki</h3>
+          <p>W przypadku nie spełnienia Państwa oczekiwań zamówione produkty można zwrócić w jednej z aptek stacjonarnych naszej sieci lub odesłać do sklepu internetowego.</p>
+        </div>
+        <div class="box">
+        <img th:src="@{/images/logo_truck.png}">
+          <h3>Szybka dostawa</h3>
+          <p>Posiadamy szeroki wahlarz sposobów na realizację przesyłek zarówno na terenie kraju jak i za granicą.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+     <th:block th:include="/_footer"></th:block>
+    </footer>
+  </body>
+</html>

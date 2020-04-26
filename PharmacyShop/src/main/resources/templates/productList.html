@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="description" content="Sklep internetowy E-Apteka Zdrowie">
+<meta name="keywords"
+	content="apteka, leki, sprzedaz lekow, realizacja e recepty, witaminy, sumplementy diety, leki na recepte">
+<meta name="author" content="Lukasz Afiniec & Taras">
+<title>E-Apteka Zdrowie | Lista produktów</title>
+<link rel="stylesheet" type="text/css" th:href="@{css/style.css}">
+</head>
+
+<header>
+	<div class="container">
+		<div id="branding">
+			<h1>
+				<span class="highlight">E-Apteka</span> Zdrowie
+			</h1>
+		</div>
+		<nav>
+			<ul>
+
+				<li><th:block th:include="/_menu"></th:block></li>
+
+			</ul>
+		</nav>
+	</div>
+</header>
+
+
+<body>
+
+	<section id="section_title">
+		<div class="container">
+			<h1>Lista produktów</h1>
+		</div>
+	</section>
+
+	<section id="boxes2">
+		<div class="container2"
+			th:each="prodInfo : ${paginationProducts.list}">
+
+			<div class="product_box">
+
+
+				<img class="product-image"
+					th:src="@{|/productImage?code=${prodInfo.code}|}" /><br></br> 
+					Kod produktu: <span th:utext="${prodInfo.code}"></span><br></br> 
+					Nazwa:<span th:utext="${prodInfo.name}"></span><br></br>
+					 Cena: <span th:utext="${#numbers.formatDecimal(prodInfo.price,3,2,'COMMA')}"></span><br></br>
+
+				<a th:href="@{|/buyProduct?code=${prodInfo.code}|}">Kup teraz</a><br></br>
+
+		
+				<th:block sec:authorize="hasAuthority('ROLE_MANAGER')">
+
+					<a style="color: red;"
+						th:href="@{|/admin/product?code=${prodInfo.code}|}">Edytuj produkt</a>
+					<br></br>
+
+				</th:block>
+			</div>
+		</div>
+	</section>
+
+
+
+      
+	<div class="page-navigator"
+		th:if="${paginationProducts.totalPages > 1}">
+		<th:block th:each="page : ${paginationProducts.navigationPages}">
+
+			<a th:href="@{|/productList?page=${page}|}" th:if="${page != -1}"
+				class="nav-item" th:utext="${page}"></a>
+
+			<span class="nav-item" th:if="${page == -1}"> ... </span>
+
+		</th:block>
+	</div>
+	
+	<footer>
+		<th:block th:include="/_footer"></th:block>
+	</footer>
+</body>
+</html>
